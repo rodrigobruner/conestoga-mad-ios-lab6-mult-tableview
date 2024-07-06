@@ -9,15 +9,24 @@ import UIKit
 
 class FriendTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var labelName: UILabel!
+
+    @IBOutlet weak var labelPhone: UILabel!
+    
+    @IBOutlet weak var labelEmail: UILabel!
+    
+    @IBOutlet weak var imageCity: UIImageView!
+    
+    @IBOutlet weak var imageSport: UIImageView!
+    
+    @IBOutlet weak var imageFood: UIImageView!
+    
+    func set(friend:Friend){
+        labelName.text = friend.name
+        labelPhone.text = friend.phone
+        labelEmail.text = friend.email
+        imageCity.image = friend.imgCity
+        imageSport.image = friend.imgSport
+        imageFood.image = friend.imgFood
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

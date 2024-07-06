@@ -9,81 +9,112 @@ import UIKit
 
 class FriendTableViewController: UITableViewController {
 
+    var friends:[Friend] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        addSample()
+        tableView.dataSource = self
+        tableView.delegate = self
+        
     }
 
-    // MARK: - Table view data source
+    func addSample(){
+
+            self.friends = [
+                Friend(name: "Benjamin",
+                       phone: "(234) 654-1231" ,
+                       email: "ben@bruner.info",
+                       imgCity: UIImage(named: "Waterloo")!,
+                       imgSport: UIImage(named: "esport")!,
+                       imgFood: UIImage(named: "pizza")!),
+                Friend(name: "Fernanda",
+                       phone: "(234) 654-1232" ,
+                       email: "fe@bruner.info",
+                       imgCity: UIImage(named: "Waterloo")!,
+                       imgSport: UIImage(named: "bike")!,
+                       imgFood: UIImage(named: "fruits")!),
+                Friend(name: "Geovani",
+                       phone: "(234) 654-1233" ,
+                       email: "geo@gmail.com",
+                       imgCity: UIImage(named: "Exeter")!,
+                       imgSport: UIImage(named: "soccer")!,
+                       imgFood: UIImage(named: "churrasco")!),
+                Friend(name: "Thiara",
+                       phone: "(234) 654-1234" ,
+                       email: "thi@gmail.com",
+                       imgCity: UIImage(named: "Exeter")!,
+                       imgSport: UIImage(named: "walking")!,
+                       imgFood: UIImage(named: "feijoada")!),
+                Friend(name: "Ilmar",
+                       phone: "(234) 654-1235" ,
+                       email: "ilmar@gmail.com",
+                       imgCity: UIImage(named: "Joinville")!,
+                       imgSport: UIImage(named: "target shooting")!,
+                       imgFood: UIImage(named: "churrasco")!),
+                Friend(name: "Kirk",
+                       phone: "(234) 654-1236" ,
+                       email: "kirk@gmail.com",
+                       imgCity: UIImage(named: "Mexico")!,
+                       imgSport: UIImage(named: "esport")!,
+                       imgFood: UIImage(named: "fries")!),
+                Friend(name: "Dilheri",
+                       phone: "(234) 654-1237" ,
+                       email: "di@gmail.com",
+                       imgCity: UIImage(named: "Mexico")!,
+                       imgSport: UIImage(named: "walking")!,
+                       imgFood: UIImage(named: "mexican-food")!),
+                Friend(name: "Joao",
+                       phone: "(234) 654-1238" ,
+                       email: "joao@gmail.com",
+                       imgCity: UIImage(named: "Balneario Camboriu")!,
+                       imgSport: UIImage(named: "bike")!,
+                       imgFood: UIImage(named: "fries")!),
+                Friend(name: "Caio",
+                       phone: "(234) 654-1239" ,
+                       email: "caio@gmail.com",
+                       imgCity: UIImage(named: "Itajai")!,
+                       imgSport: UIImage(named: "target shooting")!,
+                       imgFood: UIImage(named: "feijoada")!),
+            ]
+        
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        print(self.friends.count)
+        return self.friends.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath) as! FriendTableViewCell
+        
+        cell.set(friend: friends[indexPath.row])
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 170.0
     }
-    */
-
-    /*
-    // Override to support editing the table view.
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            tableView.beginUpdates()
+            friends.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -23,11 +23,14 @@ class CarTableViewController: UITableViewController {
     
     func addSample(){
         self.cars = [
-            Car(make: "Tesla", model: "Type A"),
-            Car(make: "Tesla", model: "Type b"),
-            Car(make: "Tesla", model: "Type c"),
-            Car(make: "Tesla", model: "Type d"),
-            Car(make: "Tesla", model: "Type e"),
+            Car(image: UIImage(named:"Chevrolet-Equinox"), make: "Chevrolet", model: "Equinox"),
+            Car(image: UIImage(named:"Chevrolet-Trailblazer"), make: "Chevrolet", model: "Trailblazer"),
+            Car(image: UIImage(named:"Chevrolet-Trax"), make: "Chevrolet", model: "Trax"),
+            Car(image: UIImage(named:"Chevrolet-Traverse"), make: "Chevrolet", model: "Traverse"),
+            Car(image: UIImage(named:"Nissan-Z"), make: "Nissan", model: "Z"),
+            Car(image: UIImage(named:"Nissan-Ariya"), make: "Nissan", model: "Ariya"),
+            Car(image: UIImage(named:"Nissan-Amada"), make: "Nissan", model: "Amada"),
+            Car(image: UIImage(named:"Nissan-GTR"), make: "Nissan", model: "GTR"),
         ]
     }
     
